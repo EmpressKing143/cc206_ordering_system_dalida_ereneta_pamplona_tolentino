@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
-import 'sign_up.dart'; 
+import 'sign_up.dart'; // Update to your file name
 
-void main() => runApp(const LoginScreen());
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const LoginScreen(),
+    );
+  }
+}
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: const Color(0xFFFFB6B6),
-        body: const LoginPage(),
-      ),
+    return Scaffold(
+      backgroundColor: const Color(0xFFFFB6B6),
+      body: const LoginPage(),
     );
   }
 }
@@ -31,6 +42,23 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _login() {
+    if (_formKey.currentState!.validate()) {
+      // Handle successful login
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Logging in...')),
+      );
+      // Navigate to another screen or perform login logic
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
@@ -41,75 +69,79 @@ class _LoginPageState extends State<LoginPage> {
             const Text(
               'Welcome Back!',
               style: TextStyle(
-                fontSize: 50.0, 
+                fontSize: 50.0,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFFF3FDE9),
               ),
             ),
             const SizedBox(height: 20),
-            Container(
-              width: 300,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: const Color(0xFFFFE6E6),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  const BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 10,
-                    offset: Offset(0, 5),
-                  ),
-                ],
+            _buildLoginForm(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLoginForm() {
+    return Container(
+      width: 300,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFE6E6),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            const Text(
+              'Log In',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    const Text(
-                      'Log In',
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    _buildTextField(Icons.person, 'Username', _usernameController),
-                    const SizedBox(height: 10),
-                    _buildTextField(Icons.lock, 'Password', _passwordController, obscureText: true),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: _login,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFFC0C0),
-                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        side: const BorderSide(color: Color(0xFFF8E0C8)),
-                      ),
-                      child: const Text('Log In', style: TextStyle(color: Colors.black)),
-                    ),
-                    const SizedBox(height: 30), 
-                    const Text(
-                      'Don\'t have an account?', 
-                      style: TextStyle(color: Color(0xFFA9E08F)),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => const SignUpScreen()),
-                        );
-                      },
-                      child: const Text(
-                        'Sign up',
-                        style: TextStyle(
-                          color: Color(0xFFFFC0C0),
-                          decoration: TextDecoration.underline, 
-                          decorationColor: Color(0xFFA9E08F),
-                        ),
-                      ),
-                    ),
-                  ],
+            ),
+            const SizedBox(height: 15),
+            _buildTextField(Icons.person, 'Username', _usernameController),
+            const SizedBox(height: 10),
+            _buildTextField(Icons.lock, 'Password', _passwordController, obscureText: true),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _login,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFFFC0C0),
+                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                side: const BorderSide(color: Color(0xFFF8E0C8)),
+              ),
+              child: const Text('Log In', style: TextStyle(color: Colors.black)),
+            ),
+            const SizedBox(height: 30),
+            const Text(
+              'Don\'t have an account?',
+              style: TextStyle(color: Color(0xFFA9E08F)),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                );
+              },
+              child: const Text(
+                'Sign up',
+                style: TextStyle(
+                  color: Color(0xFFFFC0C0),
+                  decoration: TextDecoration.underline,
+                  decorationColor: Color(0xFFA9E08F),
                 ),
               ),
             ),
@@ -150,15 +182,5 @@ class _LoginPageState extends State<LoginPage> {
         return null; // Return null if the value is valid
       },
     );
-  }
-
-  void _login() {
-    if (_formKey.currentState!.validate()) {
-      // Perform login action
-      // For example, you can check credentials or navigate to a different screen
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Logging in...')),
-      );
-    }
   }
 }
