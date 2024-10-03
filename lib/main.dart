@@ -15,13 +15,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Food Ordering System',
         theme: ThemeData(
-          primaryColor: Color(0xFFA8DF8E), // Soft green
-          scaffoldBackgroundColor: Color(0xFFF3FDE8), // Very light green/cream
+          primaryColor: Color(0xFF557C56), // Soft green (557C56)
+          scaffoldBackgroundColor: Color(0xFFFFE5E5), // Changed to light pink (FFE5E5)
           appBarTheme: AppBarTheme(
-            backgroundColor: Color(0xFFA8DF8E), // Soft green
+            backgroundColor: Color(0xFF557C56), // Soft green (557C56)
           ),
         ),
         home: HomeScreen(),
+        debugShowCheckedModeBanner: false, // Disable debug banner
       ),
     );
   }
