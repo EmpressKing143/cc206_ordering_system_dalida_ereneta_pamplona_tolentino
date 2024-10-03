@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'log_in_page.dart';
+=======
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
 
 void main() {
   runApp(MyApp());
@@ -74,7 +77,11 @@ class SignUpScreen extends StatelessWidget {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFFFC0C0), 
@@ -89,6 +96,7 @@ class SignUpScreen extends StatelessWidget {
                         'Already have an account? ', 
                         style: TextStyle(color: Color(0xFFA9E08F)), 
                       ),
+<<<<<<< HEAD
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(
@@ -103,6 +111,14 @@ class SignUpScreen extends StatelessWidget {
                             decoration: TextDecoration.underline, 
                             decorationColor: Color(0xFFA9E08F),
                           ),
+=======
+                      const Text(
+                        'Log in',
+                        style: TextStyle(
+                          color: Color(0xFFFFC0C0),
+                          decoration: TextDecoration.underline, 
+                          decorationColor: Color(0xFFA9E08F),
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
                         ),
                       ),
                     ],
@@ -142,3 +158,20 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
+=======
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Log In')),
+      body: const Center(
+        child: Text('Login Screen'),
+      ),
+    );
+  }
+}
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
