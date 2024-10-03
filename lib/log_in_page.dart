@@ -17,12 +17,14 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _usernameController = TextEditingController();
@@ -141,12 +143,22 @@ class _LoginPageState extends State<LoginPage> {
           borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
         ),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter your $label';
+        }
+        return null; // Return null if the value is valid
+      },
     );
   }
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-
+      // Perform login action
+      // For example, you can check credentials or navigate to a different screen
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Logging in...')),
+      );
     }
   }
 }
