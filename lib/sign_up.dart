@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'log_in_page.dart';
+=======
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
 =======
 >>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
 
@@ -78,7 +81,11 @@ class SignUpScreen extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
 =======
 
 >>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
@@ -97,6 +104,7 @@ class SignUpScreen extends StatelessWidget {
                         style: TextStyle(color: Color(0xFFA9E08F)), 
                       ),
 <<<<<<< HEAD
+<<<<<<< HEAD
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(
@@ -112,12 +120,17 @@ class SignUpScreen extends StatelessWidget {
                             decorationColor: Color(0xFFA9E08F),
                           ),
 =======
+=======
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
                       const Text(
                         'Log in',
                         style: TextStyle(
                           color: Color(0xFFFFC0C0),
                           decoration: TextDecoration.underline, 
                           decorationColor: Color(0xFFA9E08F),
+<<<<<<< HEAD
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
+=======
 >>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
                         ),
                       ),
@@ -159,7 +172,10 @@ class SignUpScreen extends StatelessWidget {
   }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -174,4 +190,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
+>>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
+=======
 >>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
