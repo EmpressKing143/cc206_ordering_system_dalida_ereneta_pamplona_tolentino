@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'sign_up.dart'; 
 
 void main() => runApp(const LoginScreen());
 
@@ -8,25 +9,23 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: const Color(0xFFFFB6B6), // Light pink background
+        backgroundColor: const Color(0xFFFFB6B6),
         body: const LoginPage(),
       ),
     );
   }
 }
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -38,48 +37,75 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Welcome back!',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+              'Welcome Back!',
+              style: TextStyle(
+                fontSize: 50.0, 
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFF3FDE9),
+              ),
             ),
             const SizedBox(height: 20),
             Container(
               width: 300,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFFFFD1D1), // Slightly lighter pink for the form container
+                color: const Color(0xFFFFE6E6),
                 borderRadius: BorderRadius.circular(20),
-                boxShadow: [const BoxShadow(color: Colors.black26, blurRadius: 10, offset: Offset(0, 5))],
+                boxShadow: [
+                  const BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10,
+                    offset: Offset(0, 5),
+                  ),
+                ],
               ),
               child: Form(
                 key: _formKey,
                 child: Column(
                   children: [
                     const Text(
-                      'Log in',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+                      'Log In',
+                      style: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     const SizedBox(height: 15),
-                    _buildTextField(Icons.person, 'Username', _usernameController, validateUsername),
+                    _buildTextField(Icons.person, 'Username', _usernameController),
                     const SizedBox(height: 10),
-                    _buildTextField(Icons.email, 'Email', _emailController, validateEmail),
-                    const SizedBox(height: 10),
-                    _buildTextField(Icons.lock, 'Password', _passwordController, validatePassword, obscureText: true),
+                    _buildTextField(Icons.lock, 'Password', _passwordController, obscureText: true),
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: _login,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFA8DF8E), // Light green button
+                        backgroundColor: const Color(0xFFFFC0C0),
                         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        side: const BorderSide(color: Colors.black), // Black border for consistency
+                        side: const BorderSide(color: Color(0xFFF8E0C8)),
                       ),
-                      child: const Text('Log in', style: TextStyle(color: Colors.black)),
+                      child: const Text('Log In', style: TextStyle(color: Colors.black)),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 30), 
+                    const Text(
+                      'Don\'t have an account?', 
+                      style: TextStyle(color: Color(0xFFA9E08F)),
+                    ),
                     GestureDetector(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen())),
-                      child: const Text("Don't have an account? Sign up", 
-                        style: TextStyle(color: Color(0xFFA8DF8E), fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                        );
+                      },
+                      child: const Text(
+                        'Sign up',
+                        style: TextStyle(
+                          color: Color(0xFFFFC0C0),
+                          decoration: TextDecoration.underline, 
+                          decorationColor: Color(0xFFA9E08F),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -89,78 +115,38 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  } 
+  }
 
-  Widget _buildTextField(IconData icon, String label, TextEditingController controller, String? Function(String?) validator, {bool obscureText = false}) {
+  Widget _buildTextField(IconData icon, String label, TextEditingController controller, {bool obscureText = false}) {
     return TextFormField(
       controller: controller,
       obscureText: obscureText,
+      style: const TextStyle(color: Color(0xFFF3FDE9)),
       decoration: InputDecoration(
         filled: true,
-        fillColor: const Color(0xFFA8DF8E), 
-        prefixIcon: Icon(icon),
+        fillColor: const Color(0xFFACE894),
+        prefixIcon: Icon(icon, color: const Color(0xFFF3FDE9)),
         labelText: label,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        labelStyle: const TextStyle(color: Color(0xFFF3FDE9)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
+        ),
       ),
-      validator: validator,
     );
-  }
-
-  String? validateUsername(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your username';
-    }
-    return null;
-  }
-
-  String? validateEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your email';
-    }
-    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-      return 'Please enter a valid email address';
-    }
-    return null;
-  }
-
-  String? validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your password';
-    }
-    if (value.length < 6) {
-      return 'Password must be at least 6 characters';
-    }
-    return null;
   }
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      // Proceed with the login
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+
     }
-  }
-}
-
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Sign Up")),
-      body: const Center(child: Text("Sign up page")),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Home")),
-      body: const Center(child: Text("Welcome to the Home page!")),
-    );
   }
 }
