@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import 'log_in_page.dart';
-=======
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
-=======
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
+import 'log_in_page.dart'; // Keep this line
 
 void main() {
   runApp(MyApp());
@@ -17,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, 
+      debugShowCheckedModeBanner: false,
       home: SignUpScreen(),
     );
   }
@@ -30,7 +24,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color(0xFFFFC0C0), 
+        color: const Color(0xFFFFC0C0),
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -38,25 +32,25 @@ class SignUpScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Welcome!', 
+                  'Welcome!',
                   style: TextStyle(
-                    fontSize: 50.0, 
+                    fontSize: 50.0,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFFF3FDE9), 
+                    color: Color(0xFFF3FDE9),
                   ),
                 ),
-                const SizedBox(height: 20), 
+                const SizedBox(height: 20),
                 Container(
-                  width: 300, 
+                  width: 300,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFFE6E6), 
+                    color: const Color(0xFFFFE6E6),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
                         blurRadius: 10,
-                        offset: const Offset(0, 5), 
+                        offset: const Offset(0, 5),
                       ),
                     ],
                   ),
@@ -64,11 +58,11 @@ class SignUpScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text(
-                        'Sign Up', 
+                        'Sign Up',
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black, 
+                          color: Colors.black,
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -80,31 +74,21 @@ class SignUpScreen extends StatelessWidget {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                
-=======
-
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
-=======
-
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
+                          // Your sign-up logic here
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFFFC0C0), 
+                          backgroundColor: const Color(0xFFFFC0C0),
                           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                          side: const BorderSide(color: Color(0xFFF8E0C8)), 
+                          side: const BorderSide(color: Color(0xFFF8E0C8)),
                         ),
-                        child: const Text('Sign Up', style: TextStyle(color: Colors.black)), 
+                        child: const Text('Sign Up', style: TextStyle(color: Colors.black)),
                       ),
-                      const SizedBox(height: 30), 
+                      const SizedBox(height: 30),
                       const Text(
-                        'Already have an account? ', 
-                        style: TextStyle(color: Color(0xFFA9E08F)), 
+                        'Already have an account? ',
+                        style: TextStyle(color: Color(0xFFA9E08F)),
                       ),
-<<<<<<< HEAD
-<<<<<<< HEAD
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(
@@ -116,22 +100,9 @@ class SignUpScreen extends StatelessWidget {
                           'Log in',
                           style: TextStyle(
                             color: Color(0xFFFFC0C0),
-                            decoration: TextDecoration.underline, 
+                            decoration: TextDecoration.underline,
                             decorationColor: Color(0xFFA9E08F),
                           ),
-=======
-=======
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
-                      const Text(
-                        'Log in',
-                        style: TextStyle(
-                          color: Color(0xFFFFC0C0),
-                          decoration: TextDecoration.underline, 
-                          decorationColor: Color(0xFFA9E08F),
-<<<<<<< HEAD
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
-=======
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
                         ),
                       ),
                     ],
@@ -148,34 +119,29 @@ class SignUpScreen extends StatelessWidget {
   Widget _buildTextField(IconData icon, String label, {bool obscureText = false}) {
     return TextField(
       obscureText: obscureText,
-      style: TextStyle(color: const Color(0xFFF3FDE9)), 
+      style: const TextStyle(color: Color(0xFFF3FDE9)),
       decoration: InputDecoration(
         filled: true,
         fillColor: const Color(0xFFACE894),
-        prefixIcon: Icon(icon, color: const Color(0xFFF3FDE9)), 
+        prefixIcon: Icon(icon, color: const Color(0xFFF3FDE9)),
         labelText: label,
-        labelStyle: TextStyle(color: const Color(0xFFF3FDE9)), 
+        labelStyle: const TextStyle(color: Color(0xFFF3FDE9)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: const Color(0xFFF8E0C8)),
+          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: const Color(0xFFF8E0C8)),
+          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: const Color(0xFFF8E0C8)), 
+          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
         ),
       ),
     );
   }
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -190,7 +156,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-<<<<<<< HEAD
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
-=======
->>>>>>> 9c5ea6f7793b87dfc4faa191d5b7358e2fea7dfc
