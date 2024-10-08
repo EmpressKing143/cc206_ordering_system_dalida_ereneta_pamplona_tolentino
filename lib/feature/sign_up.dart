@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'log_in_page.dart'; // Update to your file name
+import 'log_in_page.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -24,11 +24,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _signUp() {
     if (_formKey.currentState!.validate()) {
-      // Handle successful sign-up
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Sign-up successful!')),
       );
-      // Here you can add your sign-up logic (API call, etc.)
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -168,7 +166,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (label == 'Email' && !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
           return 'Please enter a valid email';
         }
-        return null; // Return null if the value is valid
+        return null;
       },
     );
   }
