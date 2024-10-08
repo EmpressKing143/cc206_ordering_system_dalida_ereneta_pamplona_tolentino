@@ -37,10 +37,9 @@ class CartScreen extends StatelessWidget {
             Text('Total: \$${cart.totalAmount.toStringAsFixed(2)}'),
             ElevatedButton(
               onPressed: () {
-                // Handle checkout logic here
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFFFBFBF), // Light pink
+                backgroundColor: Color(0xFFFFBF00),
               ),
               child: Text('Checkout'),
             ),
