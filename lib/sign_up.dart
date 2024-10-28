@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'log_in_page.dart'; // Update to your file name
+import 'log_in_page.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -10,9 +10,9 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -24,16 +24,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _signUp() {
     if (_formKey.currentState!.validate()) {
-      // Handle successful sign-up
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Sign-up successful!')),
       );
-      // Here you can add your sign-up logic (API call, etc.)
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     }
+  }
+
+  String? _validate(String? value, {bool isEmail = false, bool isPassword = false}) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a ${isEmail ? 'valid email' : isPassword ? 'password' : 'username'}';
+    }
+    if (isEmail && !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+      return 'Please enter a valid email address';
+    }
+    if (isPassword && value.length < 6) {
+      return 'Password must be at least 6 characters long';
+    }
+    if (!isPassword && value.length < 3) {
+      return 'Username must be at least 3 characters long';
+    }
+    return null;
   }
 
   @override
@@ -51,11 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   const Text(
                     'Welcome!',
-                    style: TextStyle(
-                      fontSize: 50.0,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFFF3FDE9),
-                    ),
+                    style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold, color: Color(0xFFF3FDE9)),
                   ),
                   const SizedBox(height: 20),
                   _buildSignUpForm(),
@@ -75,31 +85,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
       decoration: BoxDecoration(
         color: const Color(0xFFFFE6E6),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+        boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 10, offset: Offset(0, 5))],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            'Sign Up',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
+          const Text('Sign Up', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.black)),
           const SizedBox(height: 15),
-          _buildTextField(Icons.person, 'Username', _usernameController),
+          _buildTextField(Icons.person, 'Username', _usernameController, false),
           const SizedBox(height: 10),
-          _buildTextField(Icons.email, 'Email', _emailController),
+          _buildTextField(Icons.email, 'Email', _emailController, true),
           const SizedBox(height: 10),
-          _buildTextField(Icons.lock, 'Password', _passwordController, obscureText: true),
+          _buildTextField(Icons.lock, 'Password', _passwordController, false, isPassword: true),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: _signUp,
@@ -112,10 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: const Text('Sign Up', style: TextStyle(color: Colors.black)),
           ),
           const SizedBox(height: 30),
-          const Text(
-            'Already have an account?',
-            style: TextStyle(color: Color(0xFFA9E08F)),
-          ),
+          const Text('Already have an account?', style: TextStyle(color: Color(0xFFA9E08F))),
           GestureDetector(
             onTap: () {
               Navigator.pushReplacement(
@@ -125,11 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             },
             child: const Text(
               'Log in',
-              style: TextStyle(
-                color: Color(0xFFFFC0C0),
-                decoration: TextDecoration.underline,
-                decorationColor: Color(0xFFA9E08F),
-              ),
+              style: TextStyle(color: Color(0xFFFFC0C0), decoration: TextDecoration.underline, decorationColor: Color(0xFFA9E08F)),
             ),
           ),
         ],
@@ -137,10 +127,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildTextField(IconData icon, String label, TextEditingController controller, {bool obscureText = false}) {
+  Widget _buildTextField(IconData icon, String label, TextEditingController controller, bool isEmail, {bool isPassword = false}) {
     return TextFormField(
       controller: controller,
-      obscureText: obscureText,
+      obscureText: isPassword,
       style: const TextStyle(color: Color(0xFFF3FDE9)),
       decoration: InputDecoration(
         filled: true,
@@ -152,24 +142,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
-        ),
       ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter your $label';
-        }
-        if (label == 'Email' && !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-          return 'Please enter a valid email';
-        }
-        return null; // Return null if the value is valid
-      },
+      validator: (value) => _validate(value, isEmail: isEmail, isPassword: isPassword),
     );
   }
 }
