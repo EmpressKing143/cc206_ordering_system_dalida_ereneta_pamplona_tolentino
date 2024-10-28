@@ -42,22 +42,21 @@ class MenuScreen extends StatelessWidget {
             },
           ),
         ],
-        backgroundColor: Color(0xFF8E301E), // Set consistent background color for app bar
+        backgroundColor: Color(0xFF8E301E),
       ),
-      backgroundColor: Color(0xFFFFF9E7), // Set consistent background color for the screen
+      backgroundColor: Color(0xFFFFF9E7),
       body: GridView.builder(
         padding: EdgeInsets.all(8.0),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 8.0,
           mainAxisSpacing: 8.0,
-          childAspectRatio: 0.75, // Adjust aspect ratio to prevent overflow
+          childAspectRatio: 0.75,
         ),
         itemCount: menuItems.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              // Show the ingredients in a dialog when the item is tapped
               showDialog(
                 context: context,
                 builder: (context) {
@@ -67,7 +66,7 @@ class MenuScreen extends StatelessWidget {
                     actions: [
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).pop(); // Close the dialog
+                          Navigator.of(context).pop();
                         },
                         child: Text('Close'),
                       ),
@@ -120,15 +119,14 @@ class MenuScreen extends StatelessWidget {
                           menuItems[index]['price'],
                         );
 
-                        // Show a snackbar when an item is added to the cart
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('${menuItems[index]['title']} added to cart!'),
-                            duration: Duration(seconds: 2), // Set the duration for how long the snackbar will be visible
+                            duration: Duration(seconds: 2),
                             action: SnackBarAction(
                               label: 'Undo',
                               onPressed: () {
-                                cart.removeItem(menuItems[index]['id']); // Optional: add undo functionality
+                                cart.removeItem(menuItems[index]['id']);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text('${menuItems[index]['title']} removed from cart!'),
