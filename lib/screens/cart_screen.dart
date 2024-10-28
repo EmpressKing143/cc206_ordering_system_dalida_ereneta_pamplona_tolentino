@@ -10,9 +10,9 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
-        backgroundColor: Color(0xFF8E301E), // Consistent app bar color
+        backgroundColor: Color(0xFF8E301E),
       ),
-      backgroundColor: Color(0xFFFFF9E7), // Set the background color of the cart screen
+      backgroundColor: Color(0xFFFFF9E7),
       body: cart.itemCount == 0
           ? Center(
               child: Text(
@@ -23,7 +23,7 @@ class CartScreen extends StatelessWidget {
           : ListView.builder(
               itemCount: cart.itemCount,
               itemBuilder: (context, index) {
-                final cartItem = cart.items.values.toList()[index]; // Assuming cart.items is a map
+                final cartItem = cart.items.values.toList()[index];
                 return Card(
                   margin: EdgeInsets.all(8.0),
                   child: ListTile(
