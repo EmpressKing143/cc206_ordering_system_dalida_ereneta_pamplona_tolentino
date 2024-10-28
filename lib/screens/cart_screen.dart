@@ -9,43 +9,31 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Cart'),
+        title: Text('Cart'),
+        backgroundColor: Color(0xFF8E301E), // Consistent app bar color
       ),
+      backgroundColor: Color(0xFFFFF9E7), // Set the background color of the cart screen
       body: cart.itemCount == 0
-          ? Center(child: Text('Your cart is empty!'))
+          ? Center(
+              child: Text(
+                'Your cart is empty!',
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              ),
+            )
           : ListView.builder(
               itemCount: cart.itemCount,
               itemBuilder: (context, index) {
-                final cartItem = cart.items.values.toList()[index];
-                return ListTile(
-                  title: Text(cartItem.title),
-                  subtitle: Text('\$${cartItem.price} x ${cartItem.quantity}'),
-                  trailing: IconButton(
-                    icon: Icon(Icons.remove),
-                    onPressed: () {
-                      cart.removeItem(cartItem.id);
-                    },
+                final cartItem = cart.items.values.toList()[index]; // Assuming cart.items is a map
+                return Card(
+                  margin: EdgeInsets.all(8.0),
+                  child: ListTile(
+                    title: Text(cartItem.title),
+                    subtitle: Text('Price: \$${cartItem.price}'),
+                    trailing: Text('Qty: ${cartItem.quantity}'),
                   ),
                 );
               },
             ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Total: \$${cart.totalAmount.toStringAsFixed(2)}'),
-            ElevatedButton(
-              onPressed: () {
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFFFBF00),
-              ),
-              child: Text('Checkout'),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
