@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-String localVariable = "Local change";
-import 'sign_up.dart';
-=======
-String remoteVariable = "Remote change";
 import 'feature/sign_up.dart';
->>>>>>>  origin/cc206_pamplona_ereneta
 
 void main() {
   runApp(const MyApp());
