@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'sign_up.dart';
+import 'package:food_ordering_system/feature/sign_up.dart';
+import './log_in_page.dart'; // Adjusted to your path
+import '../screens/home_screen.dart'; // Adjusted to your path
 
 void main() {
   runApp(const MyApp());
@@ -72,11 +74,14 @@ class _LoginFormState extends State<LoginForm> {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Logging in...')));
 
-      // Navigate to HomeScreen after successful login
-      var pushReplacement = Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
+      // Simulate a delay for login process
+      Future.delayed(const Duration(seconds: 1), () {
+        // Navigate to HomeScreen after successful login
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      });
     }
   }
 
