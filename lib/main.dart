@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'feature/sign_up.dart';  // Ensure the correct path to your SignUpScreen
 import 'models/cart.dart';
-import 'screens/home_screen.dart';  // Assuming HomeScreen is in screens folder
 
 void main() {
   runApp(MyApp());
