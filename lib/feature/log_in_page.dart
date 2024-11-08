@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFB6B6),
+      backgroundColor: const Color(0xFFFFF9E7), 
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -32,7 +32,11 @@ class LoginScreen extends StatelessWidget {
             children: [
               const Text(
                 'Welcome Back!',
-                style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold, color: Color(0xFFF3FDE9)),
+                style: TextStyle(
+                  fontSize: 50.0,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF8E301E), 
+                ),
               ),
               const SizedBox(height: 20),
               const LoginForm(),
@@ -65,7 +69,8 @@ class _LoginFormState extends State<LoginForm> {
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Logging in...')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Logging in...')));
     }
   }
 
@@ -85,39 +90,66 @@ class _LoginFormState extends State<LoginForm> {
       width: 300,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFE6E6),
+        color: const Color(0xFFFFBF00), 
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 10, offset: Offset(0, 5))],
+        boxShadow: const [
+          BoxShadow(color: Colors.black26, blurRadius: 10, offset: Offset(0, 5))
+        ],
       ),
       child: Form(
         key: _formKey,
         child: Column(
           children: [
-            const Text('Log In', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.black)),
+            const Text(
+              'Log In',
+              style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF8E301E)),
+            ),
             const SizedBox(height: 15),
             _buildTextField(Icons.person, 'Username', _usernameController),
             const SizedBox(height: 10),
-            _buildTextField(Icons.lock, 'Password', _passwordController, isPassword: true),
+            _buildTextField(Icons.lock, 'Password', _passwordController,
+                isPassword: true),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _login,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFFFC0C0),
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                side: const BorderSide(color: Color(0xFFF8E0C8)),
+                backgroundColor: const Color(0xFF8E301E), 
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40), 
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                side: const BorderSide(color: Color(0xFFFFBF00)), 
+                shadowColor: Colors.black.withOpacity(0.5), 
+                elevation: 8, 
               ),
-              child: const Text('Log In', style: TextStyle(color: Colors.black)),
+              child: const Text(
+                'Log In',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18, 
+                  fontWeight: FontWeight.bold, 
+                ),
+              ),
             ),
             const SizedBox(height: 30),
-            const Text("Don't have an account?", style: TextStyle(color: Color(0xFFA9E08F))),
+            const Text(
+              "Don't have an account?",
+              style: TextStyle(color: Color(0xFF8E301E)),
+            ),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                );
               },
               child: const Text(
                 'Sign up',
-                style: TextStyle(color: Color(0xFFFFC0C0), decoration: TextDecoration.underline),
+                style: TextStyle(
+                    color: Colors.white, decoration: TextDecoration.underline),
               ),
             ),
           ],
@@ -126,21 +158,23 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  Widget _buildTextField(IconData icon, String label, TextEditingController controller, {bool isPassword = false}) {
+  Widget _buildTextField(IconData icon, String label, TextEditingController controller,
+      {bool isPassword = false}) {
     return TextFormField(
       controller: controller,
       obscureText: isPassword,
-      style: const TextStyle(color: Color(0xFFF3FDE9)),
+      style: const TextStyle(color: Color(0xFF8E301E)), 
       decoration: InputDecoration(
         filled: true,
-        fillColor: const Color(0xFFACE894),
-        prefixIcon: Icon(icon, color: const Color(0xFFF3FDE9)),
+        fillColor: Colors.white,
+        prefixIcon: Icon(icon, color: Color(0xFF8E301E)),
         labelText: label,
-        labelStyle: const TextStyle(color: Color(0xFFF3FDE9)),
+        labelStyle: const TextStyle(color: Color(0xFF8E301E)), 
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
+          borderSide: const BorderSide(color: Color(0xFFFFBF00)), 
         ),
+        errorStyle: const TextStyle(color: Color(0xFF8E301E)), 
       ),
       validator: (value) => _validate(value, isPassword: isPassword),
     );

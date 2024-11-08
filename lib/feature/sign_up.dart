@@ -53,8 +53,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFFF9E7), 
       body: Container(
-        color: const Color(0xFFFFC0C0),
+        color: const Color(0xFFFFF9E7), 
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -65,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   const Text(
                     'Welcome!',
-                    style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold, color: Color(0xFFF3FDE9)),
+                    style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold, color: Color(0xFF8E301E)),
                   ),
                   const SizedBox(height: 20),
                   _buildSignUpForm(),
@@ -83,14 +84,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
       width: 300,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFE6E6),
+        color: const Color(0xFFFFBF00), 
         borderRadius: BorderRadius.circular(20),
         boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 10, offset: Offset(0, 5))],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text('Sign Up', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.black)),
+          const Text('Sign Up', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Color(0xFF8E301E))),
           const SizedBox(height: 15),
           _buildTextField(Icons.person, 'Username', _usernameController, false),
           const SizedBox(height: 10),
@@ -101,15 +102,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ElevatedButton(
             onPressed: _signUp,
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFFFC0C0),
+              backgroundColor: const Color(0xFF8E301E), 
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              side: const BorderSide(color: Color(0xFFF8E0C8)),
+              side: const BorderSide(color: Color(0xFFFFBF00)), 
             ),
-            child: const Text('Sign Up', style: TextStyle(color: Colors.black)),
+            child: const Text('Sign Up', style: TextStyle(color: Colors.white)),
           ),
           const SizedBox(height: 30),
-          const Text('Already have an account?', style: TextStyle(color: Color(0xFFA9E08F))),
+          const Text('Already have an account?', style: TextStyle(color: Color(0xFF8E301E))),
           GestureDetector(
             onTap: () {
               Navigator.pushReplacement(
@@ -119,7 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             },
             child: const Text(
               'Log in',
-              style: TextStyle(color: Color(0xFFFFC0C0), decoration: TextDecoration.underline, decorationColor: Color(0xFFA9E08F)),
+              style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
             ),
           ),
         ],
@@ -131,16 +132,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return TextFormField(
       controller: controller,
       obscureText: isPassword,
-      style: const TextStyle(color: Color(0xFFF3FDE9)),
+      style: const TextStyle(color: Color(0xFF8E301E)),
       decoration: InputDecoration(
         filled: true,
-        fillColor: const Color(0xFFACE894),
-        prefixIcon: Icon(icon, color: const Color(0xFFF3FDE9)),
+        fillColor: Colors.white,
+        prefixIcon: Icon(icon, color: const Color(0xFF8E301E)),
         labelText: label,
-        labelStyle: const TextStyle(color: Color(0xFFF3FDE9)),
+        labelStyle: const TextStyle(color: Color(0xFF8E301E)), 
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFFF8E0C8)),
+          borderSide: const BorderSide(color: Color(0xFFFFBF00)), 
         ),
       ),
       validator: (value) => _validate(value, isEmail: isEmail, isPassword: isPassword),
