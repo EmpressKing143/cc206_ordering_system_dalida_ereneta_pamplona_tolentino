@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_ordering_system/feature/sign_up.dart';
-import './log_in_page.dart'; // Adjusted to your path
 import '../screens/home_screen.dart'; // Adjusted to your path
 
 void main() {
